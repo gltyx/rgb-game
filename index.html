@@ -1,0 +1,495 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>rgb game</title>
+</head>
+
+<body>
+    <script src="chs.js"></script>
+<script src="core.js"></script>
+    <div id="app">
+        <div id="nav-bar">
+            <div class="nav-item" onclick="changeMenu('main')">
+                Main
+            </div>
+            <div class="nav-item hidden" id="light-nav" onclick="changeMenu('light')">
+                Light
+            </div>
+            <div class="nav-item hidden" id="lasers-nav" onclick="changeMenu('lasers')">
+                Lasers
+            </div>
+            <div class="nav-item hidden" id="challenges-nav" onclick="changeMenu('challenges')">
+                Challenges
+            </div>
+            <div class="nav-item hidden" id="fidget-toys-nav" onclick="changeMenu('fidget-toys')">
+                Fidget Toys
+            </div>
+            <div class="nav-item hidden" id="automation-nav" onclick="changeMenu('automation')">
+                Automation
+            </div>
+            <div class="nav-item" onclick="changeMenu('options')">
+                Options
+            </div>
+        </div>
+        <div id="middle">
+            <div class="menu" id="main-menu">
+                <div id="rgb-container">
+                    <div id="hexcode">
+                        #000000
+                    </div>
+                    <div id="square" onmouseover="squareHovered = true" onmouseleave="squareHovered = false">
+                    </div>
+                    <div id="red-green-blue">
+                        <div class="rgb-colour" id="red">
+                            0
+                        </div>
+                        <div class="rgb-colour" id="green">
+                            0
+                        </div>
+                        <div class="rgb-colour" id="blue">
+                            0
+                        </div>
+                    </div>
+                </div>
+                <div class="rgb-upgrade-panel hidden" id="rgb-min-panel">
+                    <div class="panel-title">
+                        Minimum Roll
+                    </div>
+                    <div>
+                        Costs <span id="rgb-min-cost">1000000</span>
+                    </div>
+                    <div class="upgrade-row">
+                        <div class="rgb-button red-button" onclick="upgradeRGBMin(0)">
+                            <span id="rgb-min-0">000</span><br>
+                        </div>
+                        <div class="rgb-button green-button" onclick="upgradeRGBMin(1)">
+                            <span id="rgb-min-1">000</span><br>
+                        </div>
+                        <div class="rgb-button blue-button" onclick="upgradeRGBMin(2)">
+                            <span id="rgb-min-2">000</span><br>
+                        </div>
+                    </div>
+                    <div class="max-row hidden">
+                        <div class="rgb-button rgb-buy-max" id="rgb-min-buy-max" onclick="buyMaxRGBMin()">
+                            Buy Max
+                        </div>
+                    </div>
+                </div>
+                <div class="rgb-upgrade-panel">
+                    <div class="panel-title">
+                        Maximum Roll
+                    </div>
+                    <div>
+                        Costs <span id="rgb-max-cost">100</span>
+                    </div>
+                    <div class="upgrade-row">
+                        <div class="rgb-button red-button" onclick="upgradeRGBMax(0)">
+                            <span id="rgb-max-0">001</span><br>
+                        </div>
+                        <div class="rgb-button green-button" onclick="upgradeRGBMax(1)">
+                            <span id="rgb-max-1">001</span><br>
+                        </div>
+                        <div class="rgb-button blue-button" onclick="upgradeRGBMax(2)">
+                            <span id="rgb-max-2">001</span><br>
+                        </div>
+                    </div>
+                    <div class="max-row hidden">
+                        <div class="rgb-button rgb-buy-max" id="rgb-max-buy-max" onclick="buyMaxRGBMax()">
+                            Buy Max
+                        </div>
+                    </div>
+                </div>
+                <div class="rgb-upgrade-panel">
+                    <div class="panel-title">
+                        Point Multiplier
+                    </div>
+                    <div>
+                        Costs <span id="colour-mult-cost">1000</span>
+                    </div>
+                    <div class="upgrade-row">
+                        <div class="rgb-button red-button" onclick="upgradeColourMulti(0)">
+                            <span id="colour-mult-0">1</span>x<br>
+                        </div>
+                        <div class="rgb-button green-button" onclick="upgradeColourMulti(1)">
+                            <span id="colour-mult-1">1</span>x<br>
+                        </div>
+                        <div class="rgb-button blue-button" onclick="upgradeColourMulti(2)">
+                            <span id="colour-mult-2">1</span>x<br>
+                        </div>
+                    </div>
+                    <div class="max-row hidden">
+                        <div class="rgb-button rgb-buy-max" id="colour-multi-buy-max" onclick="buyMaxColourMulti()">
+                            Buy Max
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu hidden" id="light-menu">
+                <div class="title-row">
+                    Upgrades
+                </div>
+                <div class="button-row">
+
+                    <div class="button light-button" id="light-upgrade-0" onclick="buyLightUpgrade(0)">
+                        <div>Total light boosts points<br>
+                            Currently <span id="light-upgrade-stat-0">2</span>x<br>
+                            Costs <span id="light-upgrade-cost-0">1</span> light</div>
+                    </div>
+                    <div class="button light-button" id="light-upgrade-1" onclick="buyLightUpgrade(1)">
+                        <div>Double the speed of rolling<br>
+                            Costs <span id="light-upgrade-cost-1">71</span> light</div>
+                    </div>
+                    <div class="button light-button" id="light-upgrade-2" onclick="buyLightUpgrade(2)">
+                        <div>Make upgrade cost scaling 5% better<br>
+                            Costs <span id="light-upgrade-cost-2">150</span> light</div>
+                    </div>
+                    <div class="button light-button" id="light-upgrade-3" onclick="buyLightUpgrade(3)">
+                        <div>Straight up just like... 4x points<br>
+                            Costs <span id="light-upgrade-cost-3">1000</span> light</div>
+                    </div>
+                </div>
+                <div class="button-row">
+                    <div class="button light-button" id="light-upgrade-4" onclick="buyLightUpgrade(4)">
+                        <div>Unlock the first fidget toy :3<br>
+                            Costs <span id="light-upgrade-cost-4">8000</span> light</div>
+                    </div>
+                    <div class="button light-button" id="light-upgrade-5" onclick="buyLightUpgrade(5)">
+                        <div>Unlock photon emitters<br>
+                            Costs <span id="light-upgrade-cost-5">500000</span> light</div>
+                    </div>
+                    <div class="button light-button" id="light-upgrade-5" onclick="buyLightUpgrade(6)">
+                        <div>Unlock lasers<br>
+                            Costs <span id="light-upgrade-cost-6">1e10</span> light</div>
+                    </div>
+                </div>
+
+                <div class="title-row">
+                    Milestones
+                </div>
+                <div class="panel milestones-column">
+                    <div class="milestone light-milestone" id="light-milestone-0">
+                        <div class="milestone-title">
+                            <span id="light-milestone-req-0">1</span> Total Light
+                        </div>
+                        <div class="milestone-content">
+                            Get a new "Minimum Roll" upgrade.
+                        </div>
+                    </div>
+                    <div class="milestone light-milestone" id="light-milestone-1">
+                        <div class="milestone-title">
+                            <span id="light-milestone-req-1">15</span> Total Light
+                        </div>
+                        <div class="milestone-content">
+                            Get the value of your lowest possible roll every second.
+                        </div>
+                    </div>
+                    <div class="milestone light-milestone" id="light-milestone-2">
+                        <div class="milestone-title">
+                            <span id="light-milestone-req-2">325</span> Total Light
+                        </div>
+                        <div class="milestone-content">
+                            Start with 1,000,000 points on reset.
+                        </div>
+                    </div>
+                    <div class="milestone light-milestone" id="light-milestone-3">
+                        <div class="milestone-title">
+                            <span id="light-milestone-req-3">25000</span> Total Light
+                        </div>
+                        <div class="milestone-content">
+                            Unlock buy max of upgrades.
+                        </div>
+                    </div>
+                    <div class="milestone light-milestone" id="light-milestone-4">
+                        <div class="milestone-title">
+                            <span id="light-milestone-req-4">150000000</span> Total Light
+                        </div>
+                        <div class="milestone-content">
+                            Unlock light challenges.
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden" id="photon-emitter-container">
+
+
+                    <div class="title-row">
+                        Photon Emitters
+                    </div>
+                    <div class="text-row">
+                        Photons are boosting light gain by <span id="photon-boost-stat">1</span>x.
+                    </div>
+                    <div class="photon-emitter" id="emitter-0">
+                        <div class="emitter-content emitter-title">
+                            Alpha
+                        </div>
+                        <div class="emitter-content emitter-multi" id="emitter-multi-0">
+                            1x
+                        </div>
+                        <div class="emitter-content emitter-quantity" id="emitter-quantity-0">
+                            0
+                        </div>
+                        <div class="emitter-content emitter-buy" id="emitter-buy-0" onclick="buyPhotonEmitter(0)">
+                            Costs 500 light
+                        </div>
+                    </div>
+                    <div class="photon-emitter" id="emitter-1">
+                        <div class="emitter-content emitter-title">
+                            Beta
+                        </div>
+                        <div class="emitter-content emitter-multi" id="emitter-multi-1">
+                            1x
+                        </div>
+                        <div class="emitter-content emitter-quantity" id="emitter-quantity-1">
+                            0
+                        </div>
+                        <div class="emitter-content emitter-buy" id="emitter-buy-1" onclick="buyPhotonEmitter(1)">
+                            Costs 5,000,000 light
+                        </div>
+                    </div>
+                    <div class="photon-emitter" id="emitter-2">
+                        <div class="emitter-content emitter-title">
+                            Gamma
+                        </div>
+                        <div class="emitter-content emitter-multi" id="emitter-multi-2">
+                            1x
+                        </div>
+                        <div class="emitter-content emitter-quantity" id="emitter-quantity-2">
+                            0
+                        </div>
+                        <div class="emitter-content emitter-buy" id="emitter-buy-2" onclick="buyPhotonEmitter(2)">
+                            Costs 5.00e10 light
+                        </div>
+                    </div>
+                    <div class="photon-emitter" id="emitter-3">
+                        <div class="emitter-content emitter-title">
+                            Delta
+                        </div>
+                        <div class="emitter-content emitter-multi" id="emitter-multi-3">
+                            1x
+                        </div>
+                        <div class="emitter-content emitter-quantity" id="emitter-quantity-3">
+                            0
+                        </div>
+                        <div class="emitter-content emitter-buy" id="emitter-buy-3" onclick="buyPhotonEmitter(3)">
+                            Costs 5.00e14 light
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu hidden" id="challenges-menu">
+                <div class="title-row">
+                    Light Challenges
+                </div>
+                <div class="button-row">
+                    <div class="panel challenge-panel" id="challenge-0">
+                        <div class="panel-title">
+                            No Multi
+                        </div>
+                        <div class="challenge-desc">
+                            Point multiplier upgrades cannot be bought. Get to 1.00e9 points.
+                        </div>
+                        <div class="challenge-reward">
+                            Reward: 10x multiplier to light gain
+                        </div>
+                        <div class="challenges-buttons">
+                            <div class="button challenge-button" id="challenge-button-0" onclick="toggleChallenge(0,`points`)">
+                                Start
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu hidden" id="fidget-toys-menu">
+                <div class="panel fidget-toy-panel">
+                    <div class="fidget-toy-title">
+                        Colour Clicker
+                    </div>
+                    <div class="colour-clickers-container">
+                        <div class="colour-clicker" id="colour-clicker-0" onmousedown="colourClickerToy(0)">
+
+                        </div>
+                        <div class="colour-clicker" id="colour-clicker-1" onmousedown="colourClickerToy(1)">
+                            
+                        </div>
+                        <div class="colour-clicker" id="colour-clicker-2" onmousedown="colourClickerToy(2)">
+                            
+                        </div>
+                    </div>
+                    <div class="fidget-toy-info">
+                        10x points for <span id="colour-clicker-time">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu hidden" id="automation-menu">
+                <div class="panel automation-panel">
+                    <div class="automation-left">
+                        <div class="automation-title">
+                            Light Reset
+                        </div>
+                    </div>
+                    <div class="automation-left">
+                        <div class="button">
+                            Disabled
+                        </div>
+                        <div>
+                            <input type="number" class="automation-interval" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu hidden" id="options-menu">
+                <div class="title-row">
+                    Saving
+                </div>
+                <div class="button-row">
+                    <div class="button" id="manual-save-button" onclick="save()">
+                        Save Manually
+                    </div>
+                    <div class="button" id="reset-save-button" onclick="hardReset()">
+                        Reset Save
+                    </div>
+                </div>
+                <div class="button-row">
+                    <div class="button" id="export-button" onclick="exportSave()">
+                        Export Save
+                    </div>
+                    <div class="button" id="import-button" onclick="importSave()">
+                        Import Save
+                    </div>
+                </div>
+
+                <div class="title-row">
+                    Appearance
+                </div>
+                <div class="button-row">
+                    <div class="button" id="select-font-button">
+                        Select Font (WIP)
+                    </div>
+                    <div class="button" id="less-flash-button" onclick="lessFlash()">
+                        Reduce Flashing Colours
+                    </div>
+                </div>
+                <div class="title-row">
+                    Sound
+                </div>
+                <div class="button-row">
+                    <input type="range" id="volume-slider" min="-50" max="0">
+                </div>
+                <div class="title-row">
+                    Information
+                </div>
+                <div class="text-row">
+                    Created with ♥️ by Milo<br>
+                    Version INDEV
+                </div>
+                <div class="button-row">
+                    <a href="https://discord.gg/GwvYGnsmtN" target="_blank">
+                        <div class="button" id="discord-button">
+                            Join the Discord
+                        </div>
+                    </a>
+                    <a href="https://clawrez.gay" target="_blank">
+                        <div class="button" id="discord-button">
+                            Check out my site
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div id="currencies">
+            <div class="currency" id="points-container">
+                <div class="currency-title">
+                    Points
+                </div>
+                <div class="currency-value" id="points">
+                    0
+                </div>
+                <div class="currency-tooltip">
+                    The primary currency.<br>
+                    You have <span id="points-tooltip">235,003,245</span> total.
+                </div>
+            </div>
+            <div class="currency clickable" id="light-container" onclick="lightReset()">
+                <div class="currency-title">
+                    Light
+                </div>
+                <div class="currency-value" id="light">
+                    (+0) 0
+                </div>
+                <div class="currency-tooltip">
+                    Click to reset your points and stuff for light. Light gain is based on your total points.<br>
+                    You have <span id="light-tooltip">235,003,245</span> total.
+                </div>
+            </div>
+            <div class="currency hidden" id="photons-container" onclick="lightReset()">
+                <div class="currency-title">
+                    Photons
+                </div>
+                <div class="currency-value" id="photons">
+                    0
+                </div>
+                <div class="currency-tooltip">
+                    These babies boost your light gain. Get more with more photon emitters.<br>
+                    You have <span id="photons-tooltip">235,003,245</span> total.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal hidden" id="reset-confirmation">
+        <div class="modal-title">
+            Modal Alert
+        </div>
+        <div class="modal-content">
+            This is a modal. Better watch out homes. AAHHHHH wacth out please...
+        </div>
+        <div class="modal-buttons">
+            <div class="modal-button">Cancel</div>
+            <div class="modal-button">OK</div>
+        </div>
+    </div>
+    <script src="js/bemin.js"></script>
+    <script src="js/Tone.js"></script>
+    <script src="js/notation.js"></script>
+    <script src="js/save.js"></script>
+    <script src="js/rgb.js"></script>
+    <script src="js/light.js"></script>
+    <script src="js/photons.js"></script>
+    <script src="js/challenges.js"></script>
+    <script src="js/update.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/options.js"></script>
+    <script src="js/fidgetToys.js"></script>
+    
+
+    <script>
+        load();
+        volumeSlider.value = player.soundsVolume;
+    </script>
+<!--客服 开始-->
+<script src="//g8hh.github.io/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="//g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.github.io/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计-->
+    <div style="display: none">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6581389daf4dd6fe7dbb4d20fdcb52a6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    </div>
+</body>
+
+</html>
